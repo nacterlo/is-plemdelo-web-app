@@ -1,12 +1,13 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { PawPrint, Search, Plus, ChevronLeft, ChevronRight } from "lucide-react"
+import { PawPrint, Search, Plus, ChevronLeft, ChevronRight, Info } from "lucide-react"
 import { Input } from "@/shared/ui/input"
 import { Button } from "@/shared/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/shared/ui/dialog"
 import { Label } from "@/shared/ui/label"
 import { redirect, useRouter } from "next/navigation"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/shared/ui/tooltip"
 
 interface Animal {
     animalNumber: string
@@ -78,10 +79,10 @@ export default function PetList() {
     for (let i = 1; i <= totalPages; i++) {
         pageNumbers.push(i)
     }
-    const router = useRouter()
+
     const handleClickAnimal = async (animal: Animal) => {
-        await setActivePetId(animal.animalNumber)
-        redirect(`/tribal-card/${animal.animalNumber}`)
+        setActivePetId(animal.animalNumber)
+        redirect(`/tribal-card/${animal.animalNumber}/general-data`)
     }
 
     return (
@@ -99,81 +100,94 @@ export default function PetList() {
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                 </div>
-                <Button onClick={() => setIsAddingPet(true)}>
+                <Button variant='default' onClick={() => setIsAddingPet(true)}>
                     <Plus className="h-4 w-4 mr-1" />
                     Добавить
                 </Button>
             </div>
+            <div className="flex flex-col justify-between min-h-[75vh]">
 
-            <ul className="max-h-[75vh] overflow-y-auto space-y-2 rounded-md border p-2">
-                {currentItems.length > 0 ? (
-                    currentItems.map((pet) => (
-                        <li
-                            key={pet.animalNumber}
-                            onClick={() => handleClickAnimal(pet)}
-                            className={`flex items-center p-1 transition-colors hover:bg-muted cursor-pointer rounded-md ${activePetId === pet.animalNumber ? "bg-primary/10 border-l-3 border-primary/80" : ""
-                                }`}
-                        >
-                            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 mr-4">
-                                <PawPrint className="h-5 w-5 text-primary" />
+                <ul className="max-h-[75vh] min-h-[75vh] overflow-y-auto space-y-2 rounded-md border p-2">
+                    {currentItems.length > 0 ? (
+                        currentItems.map((pet) => (
+                            <li
+                                key={pet.animalNumber}
+                                onClick={() => handleClickAnimal(pet)}
+                                className={`flex items-center p-1 transition-colors hover:bg-muted cursor-pointer rounded-md ${activePetId === pet.animalNumber ? "bg-primary/10 border-l-3 border-primary/80" : ""
+                                    }`}
+                            >
+                                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 mr-4">
+                                    <PawPrint className="h-5 w-5 text-primary" />
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-lg font-medium text-primary">{pet.animalNumber}</span>
+                                    <span className="text-sm text-muted-foreground">{pet.animalName ? pet.animalName : "Без клички"}</span>
+                                </div>
+                                <Tooltip>
+                                    <TooltipTrigger asChild>
+                                        <div className="flex flex-col ml-auto">
+                                            <Info className="h-5 w-5 text-primary" />
+                                        </div>
+                                    </TooltipTrigger>
+                                    <TooltipContent side="right">
+                                        <p>Ферма: МТФ "ВАНЕЛЕВИЧИ"</p>
+                                        <p>Группа: ДРАКО В.П.</p>
+                                    </TooltipContent>
+                                </Tooltip>
+
+                            </li>
+                        ))
+                    ) : (
+                        <li className="p-4 text-center text-muted-foreground">No pets found matching "{searchTerm}"</li>
+                    )}
+                </ul>
+
+                {/* Pagination */}
+                {filteredPets.length > 0 && (
+                    <div className="flex items-center justify-between mt-4">
+                        {/* <div className="text-sm text-muted-foreground">
+                            Показано {indexOfFirstItem + 1}-{Math.min(indexOfLastItem, filteredPets.length)} из {filteredPets.length}
+                        </div> */}
+                        <div className="flex items-center space-x-2">
+                            <Button
+                                variant="outline"
+                                size="icon"
+                                onClick={() => handlePageChange(currentPage - 1)}
+                                disabled={currentPage === 1}
+                                className="h-8 w-8"
+                            >
+                                <ChevronLeft className="h-4 w-4" />
+                                <span className="sr-only">Previous page</span>
+                            </Button>
+
+                            <div className="flex items-center">
+                                {pageNumbers.map((number) => (
+                                    <Button
+                                        key={number}
+                                        variant={currentPage === number ? "default" : "outline"}
+                                        size="icon"
+                                        onClick={() => handlePageChange(number)}
+                                        className="h-8 w-8 mx-0.5"
+                                    >
+                                        {number}
+                                    </Button>
+                                ))}
                             </div>
-                            <div className="flex flex-col">
-                                <span className="text-lg font-medium text-primary">{pet.animalNumber}</span>
-                                <span className="text-sm text-muted-foreground">{pet.animalName ? pet.animalName : "Без клички"}</span>
-                            </div>
-                        </li>
-                    ))
-                ) : (
-                    <li className="p-4 text-center text-muted-foreground">No pets found matching "{searchTerm}"</li>
-                )}
-            </ul>
 
-            {/* Pagination */}
-            {filteredPets.length > 0 && (
-                <div className="flex items-center justify-between mt-4">
-                    <div className="text-sm text-muted-foreground">
-                        Показано {indexOfFirstItem + 1}-{Math.min(indexOfLastItem, filteredPets.length)} из {filteredPets.length}
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <Button
-                            variant="outline"
-                            size="icon"
-                            onClick={() => handlePageChange(currentPage - 1)}
-                            disabled={currentPage === 1}
-                            className="h-8 w-8"
-                        >
-                            <ChevronLeft className="h-4 w-4" />
-                            <span className="sr-only">Previous page</span>
-                        </Button>
-
-                        <div className="flex items-center">
-                            {pageNumbers.map((number) => (
-                                <Button
-                                    key={number}
-                                    variant={currentPage === number ? "default" : "outline"}
-                                    size="icon"
-                                    onClick={() => handlePageChange(number)}
-                                    className="h-8 w-8 mx-0.5"
-                                >
-                                    {number}
-                                </Button>
-                            ))}
+                            <Button
+                                variant="outline"
+                                size="icon"
+                                onClick={() => handlePageChange(currentPage + 1)}
+                                disabled={currentPage === totalPages}
+                                className="h-8 w-8"
+                            >
+                                <ChevronRight className="h-4 w-4" />
+                                <span className="sr-only">Next page</span>
+                            </Button>
                         </div>
-
-                        <Button
-                            variant="outline"
-                            size="icon"
-                            onClick={() => handlePageChange(currentPage + 1)}
-                            disabled={currentPage === totalPages}
-                            className="h-8 w-8"
-                        >
-                            <ChevronRight className="h-4 w-4" />
-                            <span className="sr-only">Next page</span>
-                        </Button>
                     </div>
-                </div>
-            )}
-
+                )}
+            </div>
             <Dialog open={isAddingPet} onOpenChange={setIsAddingPet}>
                 <DialogContent>
                     <DialogHeader>

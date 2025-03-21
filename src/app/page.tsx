@@ -1,7 +1,11 @@
 'use client'
 import Image from "next/image";
-export default function Home() {
-  return (
-    <></>
-  );
+import { redirect } from "next/navigation";
+export default function Home({
+  params
+}: {
+  params: { user : string };
+}) {
+
+  redirect(`/tribal-card`);
 }

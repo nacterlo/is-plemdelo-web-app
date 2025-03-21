@@ -12,6 +12,8 @@ import {
   PieChart,
   Settings2,
   SquareTerminal,
+  Slack
+
 } from "lucide-react"
 
 import { NavMain } from "@/shared/components/nav-main"
@@ -34,17 +36,17 @@ const data = {
   },
   teams: [
     {
-      name: "РУСП МИНСК",
+      name: "РУСП МИНСКОЕ ПП",
       logo: GalleryVerticalEnd,
       plan: "ГПП-Элевер",
     },
     {
-      name: "РУСП МИНСК",
+      name: "РУСП МИНСКОЕ ПП",
       logo: AudioWaveform,
       plan: "Молочный КРС",
     },
     {
-      name: "РУСП МИНСК",
+      name: "РУСП МИНСКОЕ ПП",
       logo: Command,
       plan: "Мясной КРС",
     },
@@ -66,6 +68,37 @@ const data = {
         },
         {
           title: "Settings",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Учет семени",
+      url: "#",
+      icon: Slack,
+      items: [
+        {
+          title: "Журнал учета",
+          url: "#",
+        },
+        {
+          title: "Накопление спермы",
+          url: "#",
+        },
+        {
+          title: "Реализация спермы",
+          url: "#",
+        },
+        {
+          title: "Выбраковка спермы",
+          url: "#",
+        },
+        {
+          title: "Покупка семени",
+          url: "#",
+        },
+        {
+          title: "Перемещение семени",
           url: "#",
         },
       ],
