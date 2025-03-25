@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronRight, type LucideIcon } from "lucide-react"
+import { ChevronRight, SquareTerminal, type LucideIcon } from "lucide-react"
 
 import {
   Collapsible,
@@ -17,6 +17,8 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/shared/ui/sidebar"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 export function NavMain({
   items,
@@ -32,10 +34,20 @@ export function NavMain({
     }[]
   }[]
 }) {
+
+  const pathName = usePathname()
+  console.log(pathName);
+
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Навигация</SidebarGroupLabel>
       <SidebarMenu>
+        <SidebarMenuButton asChild>
+          <Link href={'/tribal-card'} className={pathName.includes('tribal-card')  ? 'bg-muted-foreground/20' : ''}>
+            <SquareTerminal />
+            <span>Племкарточки</span>
+          </Link>
+        </SidebarMenuButton>
         {items.map((item) => (
           <Collapsible
             key={item.title}

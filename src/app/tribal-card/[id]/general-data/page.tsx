@@ -27,59 +27,59 @@ export default function AnimalGeneralDataPage() {
                 <div className="space-y-2">
                     <div className="grid grid-cols-2 gap-2 hover:[&>div:nth-child(2)]:text-blue-500">
                         <div className="text-md font-medium">Индивидуальный номер</div>
-                        <div className="text-sm">{'BY791502341001' || "N/A"}</div>
+                        <div className="text-sm">{'BY791502341001' }</div>
                     </div>
                     <div className="grid grid-cols-2 gap-2 hover:[&>div:nth-child(2)]:text-blue-500">
                         <div className="text-md font-medium">Рабочий номер</div>
-                        <div className="text-sm">{'100970' || "N/A"}</div>
+                        <div className="text-sm">{'100970' }</div>
                     </div>
                     <div className="grid grid-cols-2 gap-2 hover:[&>div:nth-child(2)]:text-blue-500">
                         <div className="text-md font-medium">Порода</div>
-                        <div className="text-sm">{'Голтшинская' || "N/A"}</div>
+                        <div className="text-sm">{'Голтшинская' }</div>
                     </div>
                     <div className="grid grid-cols-2 gap-2 hover:[&>div:nth-child(2)]:text-blue-500">
                         <div className="text-md font-medium">Масть</div>
-                        <div className="text-sm">{'B&W' || "N/A"}</div>
+                        <div className="text-sm">{'B&W' }</div>
                     </div>
                     <Separator />
                     <div className="grid grid-cols-2 gap-2 hover:[&>div:nth-child(2)]:text-blue-500">
                         <div className="text-md font-medium">Дата рождения</div>
-                        <div className="text-sm">{'10.05.2023' || "N/A"}</div>
+                        <div className="text-sm">{'10.05.2023'}</div>
                     </div>
                     <div className="grid grid-cols-2 gap-2 hover:[&>div:nth-child(2)]:text-blue-500">
                         <div className="text-md font-medium">Дата поступления</div>
-                        <div className="text-sm">{`02.03.2024-РУСП ВИТЕБСКОЕ ПП` || "N/A"}</div>
+                        <div className="text-sm">{`02.03.2024-РУСП ВИТЕБСКОЕ ПП` }</div>
                     </div>
                     <div className="grid grid-cols-2 gap-2 hover:[&>div:nth-child(2)]:text-blue-500">
                         <div className="text-md font-medium">Дата выбытия</div>
-                        <div className="text-sm">{'09.05.2024' || "N/A"}</div>
+                        <div className="text-sm">{'09.05.2024' }</div>
                     </div>
                     <Separator />
                     <div className="grid grid-cols-2 gap-2 hover:[&>div:nth-child(2)]:text-blue-500">
                         <div className="text-md font-medium">Место рождения</div>
-                        <div className="text-sm">{'СПК АГРОКОМБ-Т СНОВ' || "N/A"}</div>
+                        <div className="text-sm">{'СПК АГРОКОМБ-Т СНОВ' }</div>
                     </div>
                     <div className="grid grid-cols-2 gap-2 hover:[&>div:nth-child(2)]:text-blue-500">
                         <div className="text-md font-medium">Принадлежит</div>
-                        <div className="text-sm">{'РУСП МИНСКОЕ ПП' || "N/A"}</div>
+                        <div className="text-sm">{'РУСП МИНСКОЕ ПП' }</div>
                     </div>
                     <Separator />
                     <div className="grid grid-cols-2 gap-2 hover:[&>div:nth-child(2)]:text-blue-500">
                         <div className="text-md font-medium">Комплекс</div>
-                        <div className="text-sm">{'4' || "N/A"}</div>
+                        <div className="text-sm">{'4' }</div>
                     </div>
                     <div className="grid grid-cols-2 gap-2 hover:[&>div:nth-child(2)]:text-blue-500">
                         <div className="text-md font-medium">Семя</div>
-                        <div className="text-sm">{'11335' || "N/A"}</div>
+                        <div className="text-sm">{'11335' }</div>
                     </div>
                     <Separator />
                     <div className="grid grid-cols-2 gap-2 hover:[&>div:nth-child(2)]:text-blue-500">
                         <div className="text-md font-medium">Линия</div>
-                        <div className="text-sm">{'Р.СОВ.198998' || "N/A"}</div>
+                        <div className="text-sm">{'Р.СОВ.198998'}</div>
                     </div>
                     <div className="grid grid-cols-2 gap-2 hover:[&>div:nth-child(2)]:text-blue-500">
                         <div className="text-md font-medium">Ветвь</div>
-                        <div className="text-sm">{'ПОНИ ФАРМ АРЛИНДА ЧИФА 1427381' || "N/A"}</div>
+                        <div className="text-sm">{'ПОНИ ФАРМ АРЛИНДА ЧИФА 1427381' }</div>
                     </div>
                 </div>
 

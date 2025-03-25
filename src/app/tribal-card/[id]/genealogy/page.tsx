@@ -17,15 +17,15 @@ export default function LineagePage() {
                 <div className="space-y-2">
                     <div className="grid grid-cols-2 gap-2 hover:bg-chart-5/10">
                         <div className="text-sm font-medium">Birthplace</div>
-                        <div className="text-sm">{'data' || "Unknown"}</div>
+                        <div className="text-sm">{'data'}</div>
                     </div>
                     <div className="grid grid-cols-2 gap-2">
                         <div className="text-sm font-medium">Acquired Date</div>
-                        <div className="text-sm">{'data' || "Unknown"}</div>
+                        <div className="text-sm">{'data'}</div>
                     </div>
                     <div className="grid grid-cols-2 gap-2">
                         <div className="text-sm font-medium">Source</div>
-                        <div className="text-sm">{'data' || "Unknown"}</div>
+                        <div className="text-sm">{'data'}</div>
                     </div>
                 </div>
 
@@ -39,11 +39,11 @@ export default function LineagePage() {
                 <div className="space-y-2">
                     <div className="grid grid-cols-2 gap-2">
                         <div className="text-sm font-medium">Microchip ID</div>
-                        <div className="text-sm">{'data' || "None"}</div>
+                        <div className="text-sm">{'data' }</div>
                     </div>
                     <div className="grid grid-cols-2 gap-2">
                         <div className="text-sm font-medium">Registration #</div>
-                        <div className="text-sm">{'data' || "None"}</div>
+                        <div className="text-sm">{'data' }</div>
                     </div>
                 </div>
             </CardContent>
